@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import OTP from "./models/otpSchema.js";
 import User from "./models/User.js";
+import { sendOTP } from "./sendEmail.js";
+
+
 
 dotenv.config();
 const app = express();
@@ -47,8 +50,7 @@ app.post("/api/auth/send-otp", async (req, res) => {
       { otp, createdAt: new Date() }, // refresh TTL
       { upsert: true, new: true }
     );
-
-    console.log(`✅ OTP for ${email}: ${otp}`);
+  await sendOTP(email, otp);
     // TODO: send via email/SMS here
 
     res.json({ success: true, message: "OTP generated" });
@@ -67,10 +69,10 @@ app.post("/api/auth/verify-otp", async (req, res) => {
 
     if (!email || !otp) return res.status(400).json({ error: "Email and OTP are required" });
 
-    console.log("📥 Verifying OTP:", { email, providedOtp: otp });
+    console.log(`📥 Verifying OTP for email: ${email}`);
 
     const otpDoc = await OTP.findOne({ email, otp });
-    console.log("📤 Stored OTP doc:", otpDoc);
+   console.log("📤 Stored OTP doc found");
 
     if (!otpDoc) {
       // show what is stored for this email to help debug

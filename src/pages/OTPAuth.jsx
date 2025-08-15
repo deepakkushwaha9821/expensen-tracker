@@ -22,20 +22,20 @@ export default function OTPAuth() {
   const normEmail = (e) => String(e || "").trim().toLowerCase();
 
   const handleSendOtp = async () => {
-    try {
-      setLoading(true);
-      await axios.post(`${API}/api/auth/send-otp`, {
-        email: normEmail(email),
-      });
-      setStep(2);
-      alert("OTP sent! Check backend console (and your email/SMS if connected).");
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.error || "Failed to send OTP.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    await axios.post(`${API}/api/auth/send-otp`, {
+      email: normEmail(email),
+    });
+    setStep(2);
+    alert("OTP sent! Check your email.");
+  } catch (err) {
+    console.error(err);
+    alert(err.response?.data?.error || "Failed to send OTP.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleVerifyOtp = async () => {
     try {
