@@ -1,0 +1,119 @@
+/* ---------- Base reset ---------- */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #0f172a;         /* slate-900 */
+  background: #f8fafc;    /* slate-50 */
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: #0f172a;    /* slate-900 */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand {
+  font-weight: 700;
+  letter-spacing: .3px;
+  margin-right: auto;
+}
+.navbar a {
+  color: #cbd5e1;          /* slate-300 */
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.navbar a:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #1e293b;    /* slate-800 */
+  color: #e2e8f0;         /* slate-200 */
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;  /* slate-200 */
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+/* ---------- Forms ---------- */
+.form {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+}
+.input {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;  /* slate-300 */
+  border-radius: 10px;
+  outline: none;
+}
+.input:focus {
+  border-color: #6366f1;      /* indigo-500 */
+  box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+}
+.btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #6366f1;        /* indigo-500 */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.secondary { background: #0ea5e9; } /* sky-500 */
+.btn:hover { filter: brightness(1.05); }
+
+/* ---------- Lists ---------- */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+/* ---------- Utility ---------- */
+.mt-24 { margin-top: 24px; }
+.h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.subtle { color: #475569; } /* slate-600 */
